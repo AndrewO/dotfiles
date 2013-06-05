@@ -1,6 +1,6 @@
 ## Quick start
 
-    curl https://raw.github.com/coderifous/dotfiles/master/get.vimfiles.sh | sh
+    curl https://raw.github.com/AndrewO/dotfiles/master/get.vimfiles.sh | sh
 
 This clones the repo, installs the vim plugins, and links the vim-related
 dotfiles.  Running this command should get you up and running with this vim
@@ -16,7 +16,7 @@ it.
 If you want to copy this Vim config as a base for your own, you should:
 
 * Fork this repository.
-* Change the mention of "coderifous" in the get.vimfiles.sh script to your own
+* Change the mention of "AndrewO" in the get.vimfiles.sh script to your own
   github name.
 * Customize the vim config to suit you.
 
@@ -32,7 +32,7 @@ sourced.  Each file performs a different kind of customization.
 * vimrc_commands  - custom ex commands, e.g. :Vimrc
 * vimrc_functions - custom functions, e.g. :call RemoveWhiteSpace()
 * vimrc_mappings  - custom mappings, the goto file for rapidly improving your workflow.
-* vimrc_plugins   - conditionally loaded configuration depending on whether the --noplugins flag was used.
+* vimrc_plugins   - conditionally loaded configuration depending on whether the --noplugin flag was used.
 
 ### Fosters rapid workflow experimentation and extension
 
