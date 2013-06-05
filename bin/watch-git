@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+@tmux_socket = "/tmp/side"
+@tmux_pane   = ARGV[0] || "1.0"
+
+puts "Sending commands to tmux -S #{@tmux_socket} -t #{@tmux_pane}"
+
+def refresh_tig
+  puts "Refreshing tig..."
+  system "tmux -S #{@tmux_socket} send-keys -t #{@tmux_pane} \"R\""
+end
+
+loop do
+  print "Checking... "
+  output = `git fetch 2>&1`
+  puts output.inspect
+  if output =~ /From/
+    puts "Yup."
+    refresh_tig
+  else
+    puts "Nope."
+  end
+  sleep 60
+end

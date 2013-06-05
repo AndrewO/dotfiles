@@ -48,6 +48,8 @@ nnoremap <Leader>tl :tabmove +1<cr>
 nnoremap <Leader>tH :tabmove 0<cr>
 nnoremap <Leader>tL :tabmove<cr>
 
+nnoremap <C-q> :q<cr>
+
 " Cursor Movement *************************************************************
 " Make cursor move by visual lines instead of file lines (when wrapping)
 map <up> gk
@@ -86,7 +88,7 @@ map <C-L> <C-W>l
 " nmap <F5 run current spec in tmux pane
 nmap <silent> <F5> :!tmux -S /tmp/side send-keys -t 1.3 "clear; tmux clear-history; bundle exec rspec %" Enter &<cr> | redraw!
 
-nmap <silent> <Leader>ag "ayiw:!tmux -S /tmp/main send-keys -t 1.1 "clear; tmux clear-history; ag <C-r>a" Enter<cr> | redraw!
+nmap <silent> <Leader>ag "ayiw:Ag <C-r>"<cr>
 
 " <F7> toggles hidden characters
 map  <F7> :set list!<CR>
@@ -148,3 +150,13 @@ endfunction
 
 " toggle strings and symbols
 nnoremap <Leader>: :call <SID>toggle_ruby_symbol_string()<cr>
+
+" isolate selection
+function! s:isolate_selection() range
+  set foldmethod=manual
+  normal zE
+  exe "1,'<-fold"
+  exe "'>+,$fold"
+endfunction
+
+vnoremap ,f :call <SID>isolate_selection()<cr>

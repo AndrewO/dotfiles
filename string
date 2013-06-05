@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+begin
+  require 'active_support'
+  require 'active_support/core_ext/string'
+rescue LoadError => e
+  STDERR.puts "Warning: gem install activesupport if you want more advanced manipulations."
+end
+
+$command = ARGV.shift
+
+def process(input)
+  puts input.send($command)
+end
+
+if ARGV.length > 0
+  ARGV.each { |i| process(i.chomp) }
+else
+  while i = gets
+    process(i.chomp)
+  end
+end

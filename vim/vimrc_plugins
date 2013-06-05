@@ -31,7 +31,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtHistory(1)':        ['<up>'],
   \ 'MarkToOpen()':         ['<c-a>'],
   \ }
-map <Leader>l :CtrlPCurFile<CR>
+map <Leader>f :CtrlPCurFile<CR>
 map <Leader>r :CtrlPMRUFiles<CR>
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>g :CtrlPLine<CR>
@@ -62,9 +62,6 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter * IndentGuidesEnable
 hi IndentGuidesOdd  guibg=#003540  ctermbg=0
 hi IndentGuidesEven guibg=#003540  ctermbg=0
-
-" Tagbar plugin config
-nnoremap <Leader>i :TagbarToggle<CR>
 
 " YankRing plugin config
 nmap yr :YRShow<CR>
@@ -114,27 +111,6 @@ let g:utl_cfg_hdl_scm_http_system = "silent !open -a Choosy '%u'"
 "   http://gist.github.com/1634235
 let g:Powerline_symbols = 'fancy'
 
-" EasyMotion
-let g:EasyMotion_do_mapping = 0
-
-nnoremap <Leader>f :call EasyMotion#F(0,0)<cr>
-nnoremap <Leader>F :call EasyMotion#F(0,1)<cr>
-nnoremap <Leader>j :call EasyMotion#JK(0,0)<cr>
-nnoremap <Leader>k :call EasyMotion#JK(0,1)<cr>
-
-onoremap <Leader>f :call EasyMotion#F(0,0)<cr>
-onoremap <Leader>F :call EasyMotion#F(0,1)<cr>
-onoremap <Leader>j :call EasyMotion#JK(0,0)<cr>
-onoremap <Leader>k :call EasyMotion#JK(0,1)<cr>
-
-vnoremap <Leader>f :<C-u>call EasyMotion#F(1,0)<cr>
-vnoremap <Leader>F :<C-u>call EasyMotion#F(1,1)<cr>
-vnoremap <Leader>j :<C-u>call EasyMotion#JK(1,0)<cr>
-vnoremap <Leader>k :<C-u>call EasyMotion#JK(1,1)<cr>
-
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
 " signature plugin
 " Not config for the plugin, just coloring for it.
 hi! link SignColumn LineNr
@@ -142,7 +118,7 @@ hi! link SignColumn LineNr
 " tmux/rspec related config
 nnoremap <Leader>RF :cgetfile tmp/quickfix \| copen<cr>
 let g:TmuxTargetSession = "/tmp/side"
-let g:TmuxTargetPane    = "1.2"
+let g:TmuxTargetPane    = "1.0"
 let g:TmuxRspecOpts     = "--require ./.rspec/quickfix_formatter --format QuickfixFormatter:tmp/quickfix --require ./.rspec/progress_with_failures --format ProgressWithFailures --colour --loadby mtime --drb"
 set errorformat=%f:%l\ %n\ %m
 

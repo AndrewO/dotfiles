@@ -1,10 +1,14 @@
-All bundles are installed as submodules and loaded using pathogen.
+All bundles are installed by cloning git repositories and loaded using pathogen.
 
-I use vim-bundler to manage the plugins. The plugin manifest is one directory up
-(couldn't find an easy way around this using vim-bundler).
+I use the stupid vim plugin installer (a small bash script) to install the
+plugins. The plugin manifest is maintained as an array in the bash script
+itself.
 
-  gem install vim-bundler
+  $VIMHOME/plugins install
 
-To install a new plugin, add it to the vim_bundles manifest, then run:
+To install a new plugin, add it to the vim_bundles manifest, then run the
+install command again.  
 
-  vbundle install
+Learn more:
+
+  $VIMHOME/plugins help

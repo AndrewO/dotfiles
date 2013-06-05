@@ -3,12 +3,12 @@
 
 " easily get to vim config
 command Vimrc        :e ~/.vimrc
-command VimCommands  :e ~/.vim/vimrc_commands
-command VimFunctions :e ~/.vim/vimrc_functions
-command VimMaps      :e ~/.vim/vimrc_mappings
-command VimPlugins   :e ~/.vim/vimrc_plugins
-command VimSettings  :e ~/.vim/vimrc_settings
-command VimBundles   :e ~/dotfiles/vim_bundles
+command VimrcCommands  :e ~/.vim/vimrc_commands
+command VimrcFunctions :e ~/.vim/vimrc_functions
+command VimrcMaps      :e ~/.vim/vimrc_mappings
+command VimrcPlugins   :e ~/.vim/vimrc_plugins
+command VimrcSettings  :e ~/.vim/vimrc_settings
+command VimPlugins   :e ~/.vim/plugins
 command VimNT :NERDTree ~/.vim
 
 " easily get to bashrc

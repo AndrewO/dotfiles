@@ -31,6 +31,7 @@ set list
 set winminheight=0              " (wmh) the minimal height of the window when it's not the current window
 
 set nowrap                      " allows text to continue off the window (need horizontal scrolling)
+set number
 set numberwidth=4
 set sidescrolloff=2
 set scrolloff=2
@@ -41,7 +42,7 @@ set splitbelow splitright
 
 set shellcmdflag=-lc            " Force shell commands to load personal bash init scripts
 
-set cursorline
+set nocursorline
 "set cursorcolumn
 
 set wrapscan                    " (ws) allows search to wrap to top of document when the bottom has been hit
@@ -52,7 +53,7 @@ set smartcase                   " (scs) don't ignore case when the search patter
 set infercase                   " (inf) during keyword completion, fix case of new word (when ignore case is on)
 
 set foldcolumn=0                " (fdc) width of fold column (to see where folds are)
-set foldmethod=syntax           " (fdm) creates folds that make sense for the language
+set foldmethod=manual           " (fdm) creates folds that make sense for the language
 set foldenable                  " (fen) enables or disables folding
 
 set clipboard=unnamed           " copy/paste to "* by default
@@ -68,9 +69,9 @@ set background=dark
 syntax on " syntax highlighting
 colorscheme jellybeans
 
-hi TabLine     ctermfg=244 ctermbg=235
-hi TabLineSel  ctermfg=239 ctermbg=233
-hi TabLineFill ctermfg=0 ctermbg=233
+hi TabLineSel  ctermfg=244 ctermbg=235
+hi TabLine     ctermfg=239 ctermbg=233
+hi TabLineFill ctermfg=0   ctermbg=233
 
 set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
 
@@ -89,7 +90,3 @@ set complete-=k
 " to use: while in insertion mode and at the BEGINNING of a word, type <ctrl-x> then <ctrl-n>
 "set thesaurus-=/usr/share/dict/mobythes.aur thesaurus+=/usr/share/dict/mobythes.aur
 "set complete-=k complete+=k
-
-hi TabLineFill ctermfg=White ctermbg=0
-hi TabLine     ctermfg=102 ctermbg=0
-hi TabLineSel  ctermfg=0 ctermbg=234

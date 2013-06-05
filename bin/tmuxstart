@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Some helper functions for simpler session files
+new_session() { tmux -S/tmp/$session new-session -d -s $session "$@"; }
+new_window() { tmux -S/tmp/$session new-window -d -t $session "$@"; }
+send_keys() { tmux -S/tmp/$session send-keys -t $session:"$@"; }
+select_window() { tmux -S/tmp/$session select-window -t $session:"$@"; }
+select_pane() { tmux -S/tmp/$session select-pane -t $session:"$@"; }
+set_env() { tmux -S/tmp/$session set-environment -t $session "$@"; }
+split() { tmux -S/tmp/$session split-window -t $session:"$@"; }
+swap() { tmux -S/tmp/$session swap-pane -t $session:"$@"; }
+
+
+usage() {
+    echo "Usage: $0 tmux-session"
+}
+
+# Print usage information if there's not exactly 1 argument
+[ $# -ne 1 ] && usage && exit 1
+
+session=$1
+sessiondir=${TMUXSTART_DIR:-$HOME/.tmuxstart}
+TMUX_OLD=$TMUX
+TMUX=
+if ! tmux has-session -t $session ; then
+    if [ -f "$sessiondir/$1" ] ; then
+        . "$sessiondir/$1"
+    else
+        tmux -S/tmp/$session new-session -d -s $session
+    fi
+fi
+if [ "$TMUX_OLD" = "" ]; then
+    tmux -S/tmp/$session attach-session -t $session
+else
+    tmux -S/tmp/$session switch-client -t $session
+fi
+TMUX=$TMUX_OLD

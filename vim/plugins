@@ -1,0 +1,165 @@
+#!/bin/bash
+
+plugins=(
+  https://github.com/tpope/vim-pathogen.git
+
+  https://github.com/scrooloose/nerdtree.git
+  https://github.com/msanders/snipmate.vim.git
+  https://github.com/timcharper/textile.vim.git
+  https://github.com/vim-ruby/vim-ruby.git
+  https://github.com/kchmck/vim-coffee-script.git
+  https://github.com/nathanaelkane/vim-indent-guides.git
+  https://github.com/kana/vim-textobj-user.git
+  https://github.com/nelstrom/vim-textobj-rubyblock.git
+  https://github.com/ecomba/vim-ruby-refactoring.git
+  https://github.com/csexton/jekyll.vim.git
+  https://github.com/gregsexton/gitv.git
+  https://github.com/xolox/vim-session.git
+
+  https://github.com/tsaleh/vim-align.git
+  https://github.com/tsaleh/vim-matchit.git
+
+  https://github.com/tpope/vim-fugitive.git
+  https://github.com/tpope/vim-git.git
+  https://github.com/tpope/vim-haml.git
+  https://github.com/tpope/vim-markdown.git
+  https://github.com/tpope/vim-rails.git
+  https://github.com/tpope/vim-repeat.git
+  https://github.com/tpope/vim-surround.git
+  https://github.com/tpope/vim-vividchalk.git
+  https://github.com/tpope/vim-endwise.git
+
+  https://github.com/Lokaltog/vim-powerline.git
+
+  https://github.com/vim-scripts/ack.vim.git
+  https://github.com/vim-scripts/AutoTag.git
+  https://github.com/vim-scripts/closetag.vim.git
+  https://github.com/vim-scripts/tComment.git
+  https://github.com/vim-scripts/Gist.vim.git
+  https://github.com/vim-scripts/ReplaceWithRegister.git
+  https://github.com/vim-scripts/ZoomWin.git
+  https://github.com/vim-scripts/xml.vim.git
+
+	https://github.com/Townk/vim-autoclose.git
+  https://github.com/danro/rename.vim.git
+  https://github.com/vim-scripts/blockle.vim.git
+  https://github.com/vim-scripts/utl.vim.git
+  https://github.com/sjl/gundo.vim.git
+  https://github.com/jelera/vim-javascript-syntax.git
+  https://github.com/altercation/vim-colors-solarized.git
+  https://github.com/nanotech/jellybeans.vim.git
+  https://github.com/coderifous/textobj-word-column.vim.git
+  https://github.com/majutsushi/tagbar.git
+  https://github.com/kien/ctrlp.vim.git
+  https://github.com/slim-template/vim-slim.git
+)
+
+bundle_dir=$HOME/.vim/bundle
+
+function install {
+  mkdir -p $bundle_dir
+  cd $bundle_dir
+  index=0
+
+  for plugin in ${plugins[@]}; do
+    index=$(expr $index + 1)
+    echo "[$index of ${#plugins[@]}] Installing $plugin..."
+    git clone -q $plugin
+  done
+
+  cd -
+  echo "Done installing plugins."
+}
+
+function update {
+  cd $bundle_dir
+  index=0
+
+  for plugin in $(ls); do
+    index=$(expr $index + 1)
+    echo "[$index of ${#plugins[@]}] Updating $plugin..."
+    cd $plugin; git pull; cd -
+  done
+
+  cd -
+  echo "Done updating plugins."
+}
+
+function clean {
+  rm -rf $bundle_dir/*
+  echo "Removed everything under $bundle_dir"
+}
+
+function help {
+exec $PAGER <<EOS
+NAME
+    $0 -- stupid vim plugin installer that works with pathogen.
+
+SYNOPSIS
+    $0 [install|update|clean|reset|help]
+
+DESCRIPTION
+    This script contains the list of plugins for the vim repo, and provides a
+    few subcommands:
+
+    install           iterates over the list of plugins and clones each one into
+                      the $HOME/.vim/bundle.
+
+    update            iterates over the installed plugins and does a `git pull`
+                      in each one.
+
+    clean             removes everything under $HOME/.vim/bundle.
+
+    reset             same as calling clean then install.
+
+EXAMPLE
+    Install plugins after a fresh clone of the dotfiles repo:
+
+      $ cd $HOME/.vim
+      $ $0 install
+
+NOTES
+    To change which plugins are installed by this script, simply edit the script
+    itself.  The plugin list is stored as an array of git repositories.
+    Plugins are installed by git-cloning them into the bundle directory.
+
+ISSUES
+    If you find any bugs with this script, please file an issue on github:
+
+      https://github.com/coderifous/dotfiles/issues
+
+BLAME
+    Written by Jim Garvin (@coderifous) because there's still nothing out there
+    that provides effortless bootstrapping.
+
+REUSE
+    If you want to manage your vim plugins in the same way, just copy this
+    script and edit the list of plugins to your pleasure.  No special
+    libraries or plugins required.  Well, it does require:
+
+    * bash (it's a shell script)
+    * git  (expects every vim plugin to be in a git repo)
+
+    Pathogen is the first plugin in the plugin list. Consider that one
+    mandatory.  The rest are up to you.
+EOS
+}
+
+case "$1" in
+  install)
+    install
+    ;;
+  update)
+    update
+    ;;
+  clean)
+    clean
+    ;;
+  reset)
+    clean
+    install
+    ;;
+  *)
+    help
+    ;;
+esac

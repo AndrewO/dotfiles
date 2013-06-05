@@ -48,8 +48,14 @@ alias gsl="git shortlog -sn"
 alias gw="git whatchanged"
 alias gsr="git svn rebase"
 alias gsp="git svn dcommit"
-alias gsui="git submodule update --init"
+alias gst="git stash"
+alias gstp="git stash pop"
 alias ts="tig status"
+alias gsui="git submodule update --init"
+alias gup="glr && gsui"
+alias grb="git rebase "
+alias gri="git rebase -i "
+alias gmo="git merge origin/master"
 
 # Useful report of what has been committed locally but not yet pushed to another
 # branch.  Defaults to the remote origin/master.  The u is supposed to stand for
@@ -191,3 +197,5 @@ alias top=htop
 alias tmux='TERM=screen-256color tmux'
 
 ############################################################
+alias vi=vim
+alias clcl='clear; tmux clear-history'
