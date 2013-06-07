@@ -180,7 +180,9 @@ complete -W "$(_ssh_completion)" ssh
 ## Other
 ############################################################
 
-source /usr/local/etc/bash_completion.d/cdargs-bash.sh
+if [ -f /usr/local/etc/bash_completion.d/cdargs-bash.sh ]; then
+  source /usr/local/etc/bash_completion.d/cdargs-bash.sh
+fi
 
 if [[ "$USER" == '' ]]; then
   # mainly for cygwin terminals. set USER env var if not already set
