@@ -90,6 +90,14 @@ ps1_rvm()
   command -v rvm-prompt >/dev/null 2>&1 && printf "%s" " $(rvm-prompt) "
 }
 
+ps1_last_error_status()
+{
+  local exit_status=$?
+  if [ $exit_status -gt 0 ]; then
+    printf "\e[1;37;41mExit status: \e[0;37:41m%i\e[0m\n" ${exit_status}
+  fi
+}
+
 ps1_update()
 {
   local prompt_char='$' separator="\n" notime=0
