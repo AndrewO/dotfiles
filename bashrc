@@ -43,6 +43,11 @@ if [ -d /opt/local/lib/postgresql83/bin ] ; then
   PATH="${PATH}:/opt/local/lib/postgresql83/bin"
 fi
 
+# Go
+if [ -d /usr/local/go/bin ] ; then
+  PATH="${PATH}:/usr/local/go/bin"
+fi
+
 PATH=.:${PATH}
 
 ############################################################
