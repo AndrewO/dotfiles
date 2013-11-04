@@ -10,5 +10,3 @@ if [ -e ~/.bash_local ] ; then
 fi
 
 eval "$(rbenv init -)"
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
