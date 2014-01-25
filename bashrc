@@ -48,6 +48,11 @@ if [ -d /usr/local/go/bin ] ; then
   PATH="${PATH}:/usr/local/go/bin"
 fi
 
+# Haskell
+if [ -d ~/.cabal/bin ] ; then
+  PATH="${PATH}:${HOME}/.cabal/bin"
+fi
+
 PATH=.:${PATH}
 
 ############################################################

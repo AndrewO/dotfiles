@@ -122,3 +122,23 @@ let g:TmuxTargetPane    = "1.0"
 let g:TmuxRspecOpts     = "--require ./.rspec/quickfix_formatter --format QuickfixFormatter:tmp/quickfix --require ./.rspec/progress_with_failures --format ProgressWithFailures --colour --loadby mtime --drb"
 set errorformat=%f:%l\ %n\ %m
 
+" Syntastic
+map <silent> <Leader>\se :Errors<CR>
+map <Leader>\s :SyntasticToggleMode<CR>
+" To always show the errors list when editing we can set the following flag:
+let g:syntastic_auto_loc_list=1
+
+" TagBar
+nmap <Leader>\t :TagbarToggle<CR>
+
+" Hdevtools
+function! FindCabalSandboxRoot()
+    return finddir('.cabal-sandbox', './;')
+endfunction
+
+function! FindCabalSandboxRootPackageConf()
+    return glob(FindCabalSandboxRoot().'/*-packages.conf.d')
+endfunction
+
+let g:hdevtools_options = '-g-ilib -g-isrc -g-i. -g-idist/build/autogen -g-Wall -g-package-conf='.FindCabalSandboxRootPackageConf()
+

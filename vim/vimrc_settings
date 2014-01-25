@@ -92,3 +92,8 @@ set complete-=k
 " to use: while in insertion mode and at the BEGINNING of a word, type <ctrl-x> then <ctrl-n>
 "set thesaurus-=/usr/share/dict/mobythes.aur thesaurus+=/usr/share/dict/mobythes.aur
 "set complete-=k complete+=k
+"
+
+let $PATH .= ":/Users/aobrien/.cabal/bin"
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
