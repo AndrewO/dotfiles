@@ -21,7 +21,7 @@ let NERDTreeMouseMode=1
 command Nojs :let NERDTreeIgnore=[".js$"]
 
 " CtrlP plugin
-let g:ctrlp_map = '<Leader>e'
+let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_prompt_mappings = {
