@@ -3,6 +3,8 @@
 plugins=(
   https://github.com/tpope/vim-pathogen.git
 
+  https://github.com/Shougo/vimproc.vim.git
+
   https://github.com/scrooloose/nerdtree.git
   https://github.com/msanders/snipmate.vim.git
   https://github.com/timcharper/textile.vim.git
@@ -14,6 +16,7 @@ plugins=(
   https://github.com/ecomba/vim-ruby-refactoring.git
   https://github.com/csexton/jekyll.vim.git
   https://github.com/gregsexton/gitv.git
+  https://github.com/xolox/vim-misc.git
   https://github.com/xolox/vim-session.git
 
   https://github.com/tsaleh/vim-align.git
